@@ -7,13 +7,20 @@
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="main.js" type="module"></script>
-    
-
 </head>
 <body>
-    <h1>Tic Tac Toe</h1>
-    <div class="gameboard__container"></div>
-    <button id="restartButton">Restart Game</button>
-
+    <div class="wrapper">
+        <h1 class="wrapper__title">Tic Tac Toe</h1>
+        <div class="stats">
+            <div class="stats__container">
+                <div class="stats__container-player">player 1</div>
+                <div class="stats__container-score">0-0</div>
+                <div class="stats__container-player">player 2</div>
+            </div>
+        </div>
+        
+        <div class="gameboard__container"></div>
+        <button class="restart-button" id="restartButton">Restart Game</button>
+    </div>
 </body>
 </html>
