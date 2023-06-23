@@ -1,40 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Carter+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap');
 
 /* Global styles */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Carter One', cursive;
-  background-color: #f6f3f3;
 }
 
 /* Wrapper styles */
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  padding-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
 }
 
 .wrapper__title {
+ font-family: "Carter One", cursive;
   font-size: 4rem;
+  color: #000033;
 }
 
 /* Gameboard styles */
 .gameboard__container {
   display: grid;
-  background-color: #fff;
+  background-color: W;
   padding: 1rem;
   border-radius: 2rem;
-  font-family: 'Carter One', cursive;
+  font-family: "Carter One", cursive;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 1rem;
-  width: 450px;
-  height: 450px;
+  width: 440px;
+  height: 440px;
   margin: 0 auto;
 }
 
@@ -42,36 +42,57 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f0f0f0;
+  background-color: whitesmoke;
   border-radius: 2rem;
+  border: 2px solid lightgrey;
   font-size: 5rem;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.cell:hover {
+  transform: scale(1.05);
 }
 
 /* Stats styles */
-.stats {
-}
 
 .stats__container {
   display: flex;
   gap: 2rem;
-  font-size: 2.2rem;
+  font-size: 1.7rem;
+  color: #000033;
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 800;
 }
 
 .stats__container-score {
   border-radius: 3rem;
+  border: 2px solid lightgrey;
   padding: 0 1.2rem;
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-  background-color: #fff;
+  background-color: whitesmoke;
+  transition: all 0.5s;
+  font-family: "Carter One", cursive;
+
+}
+.stats__container-score:hover {
+  transform: scale(1.2);
+}
+.stats__container-score span {
+  background-color: whitesmoke;
+  border-radius: 1rem;
 }
 
 /* Button styles */
 button {
+  border: 2px solid lightgrey;
   padding: 1rem 1.2rem;
   border-radius: 3rem;
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-  background-color: #fff;
-  border: none;
+  background-color: whitesmoke;
   font-size: 1.5rem;
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 700;
 }
 
 button:hover {
@@ -81,12 +102,26 @@ button:hover {
 
 /* Footer styles */
 footer {
-  padding: 1rem;
+  padding: 2rem;
   display: flex;
   justify-content: center;
   gap: 1rem;
   align-items: center;
   margin-top: auto;
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 600;
   text-align: center;
+}
+.marker-x {
+  color: rgb(71, 132, 238); /* Set the color for Player 1's marker (X) */
+}
 
+.marker-o {
+  color: rgb(231, 75, 75); /* Set the color for Player 2's marker (O) */
+}
+.winner {
+  font-size: 1.5rem;
+  color: #6aca77;
+  font-weight: 800;
+  font-family: 'Red Hat Display', sans-serif;
 }

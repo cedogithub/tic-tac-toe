@@ -1,11 +1,21 @@
 const createPlayer = (name, marker) => {
-  // Implementation of the player factory function
-  const getName = () => name;
-  const getMarker = () => marker;
-
-  return {
-    getName,
-    getMarker,
+    let score = 0;
+  
+    const getName = () => name;
+    const getMarker = () => marker;
+    const getScore = () => score;
+    const incrementScore = () => {
+      score++;
+    };
+  
+    return {
+      getName,
+      getMarker,
+      getScore,
+      incrementScore,
+      score,
+    };
   };
-};
-export { createPlayer };
+  
+  export { createPlayer };
+  
