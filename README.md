@@ -1,6 +1,6 @@
 # Tic Tac Toe
 
-A simple Tic Tac Toe game implemented in JavaScript using factory functions and the module system.
+A Tic Tac Toe game implemented in JavaScript using factory functions and the module system. PLay here : cedogithub.github.io/tic-tac-toe/
 
 ![image](https://github.com/cedogithub/tic-tac-toe/assets/39746523/817a0a4c-a1d6-4ba4-9d57-52ab8f77b789)
 
@@ -20,7 +20,7 @@ The rules of Tic Tac Toe are straightforward. Two players take turns marking emp
 
 # Tic Tac Toe
 
-Un simple jeu de Tic Tac Toe (Morpion) implémenté en JavaScript à l'aide de fonctions de fabrique et du système de modules.
+Un jeu de Tic Tac Toe (Morpion) implémenté en JavaScript à l'aide de fonctions de fabrique et du système de modules.
 
 ![image](https://github.com/cedogithub/tic-tac-toe/assets/39746523/67b9e4fc-abb9-4534-abba-5fa2f553f852)
 
