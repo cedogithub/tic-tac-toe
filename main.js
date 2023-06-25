@@ -1,8 +1,5 @@
 import { createGameboard } from "./gameboard.js";
 import { createPlayer } from "./player.js";
-// Create an audio element dynamically
-// const audioElement = new Audio(soundFile);
-
 
 // Create players using the createPlayer function
 const player1 = createPlayer("Player 1", "X");
