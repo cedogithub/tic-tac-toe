@@ -1,5 +1,8 @@
 import { createGameboard } from "./gameboard.js";
 import { createPlayer } from "./player.js";
+// Create an audio element dynamically
+// const audioElement = new Audio(soundFile);
+
 
 // Create players using the createPlayer function
 const player1 = createPlayer("Player 1", "X");
@@ -21,7 +24,7 @@ const renderGameboard = () => {
     // Create a new cell element
     const cell = document.createElement("div");
     cell.classList.add("cell");
-    
+
     // Assign a CSS class based on the player's marker
     if (currentMarker === "X") {
       cell.classList.add("marker-x");
@@ -29,7 +32,7 @@ const renderGameboard = () => {
       cell.classList.add("marker-o");
     }
     cell.textContent = currentMarker;
-    
+
 
     // Add a click event listener to the cell
     cell.addEventListener("click", () => {
@@ -58,19 +61,21 @@ const playRound = (index) => {
     console.log("Game over. Please restart the game.");
     return;
   }
+  // Play the sound
+  const audioElement = new Audio("./cellClick.mp3");
+  audioElement.play();
 
   // Update the cell on the game board with the current player's marker
   const marker = currentPlayer.getMarker();
   const isCellUpdated = gameboard.updateCell(index, marker);
   const scoreBoard = document.querySelector('.stats__container-score')
-  
+
   if (isCellUpdated) {
     // Check if the current player has won
     const isWinner = checkWin(marker, currentPlayer);
     if (isWinner) {
         // Announce the winner
         let winnerElement = document.querySelector('.winner');
-      console.log(`Player ${currentPlayer.getName()} is the winner!`);
       winnerElement.textContent = ` ${currentPlayer.getName()} is the winner!`
       isGameOver = true;
     }
@@ -91,43 +96,47 @@ const checkWin = (marker) => {
       [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
       [0, 4, 8], [2, 4, 6] // Diagonals
     ];
-  
+
     // Iterate through each winning combination
     for (const combo of winningCombos) {
       let isWinningCombo = true; // Flag to track if all cells in the combination match the marker
-  
+
       // Check each index in the current combination
       for (const index of combo) {
         const cellMarker = gameboard.getBoard()[index]; // Get the marker at the current index
-  
+
         // Check if the cell marker matches the player's marker and is not empty
         if (cellMarker !== marker || cellMarker === '') {
           isWinningCombo = false; // Set the flag to false if the marker doesn't match or is empty
           break; // Exit the loop, no need to check further
         }
       }
-  
+
       // If all cells in the combination match the marker, return true (win)
       if (isWinningCombo) {
         // Increment the winning player's score
         currentPlayer.incrementScore();
-  
+        // Play a winning sound
+        const audioElement = new Audio("./winner.mp3");
+        audioElement.play();
+
+
         // Update the scoreboard elements
         const player1ScoreElement = document.querySelector('.player1-score');
         const player2ScoreElement = document.querySelector('.player2-score');
-  
+
         player1ScoreElement.textContent = player1.getScore(); // Update player 1's score
         player2ScoreElement.textContent = player2.getScore(); // Update player 2's score
-  
+
         return true;
       }
     }
-  
+
     // No winning combination found, return false (no win)
     return false;
   };
-  
-  
+
+
 // Restarts the game
 const restartButton = document.querySelector("#restartButton");
 restartButton.addEventListener("click", () => {
