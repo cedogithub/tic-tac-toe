@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Carter+One&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
 
 /* Global styles */
 * {
@@ -8,19 +9,48 @@
   margin: 0;
 }
 
+@keyframes cube {
+  from {
+    transform: scale(0) rotate(0deg) translate(-50%, -50%);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(20) rotate(960deg) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+nav {
+  text-align: center;
+  padding: 0.5rem 0;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
 /* Wrapper styles */
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .wrapper__title {
- font-family: "Carter One", cursive;
+  font-family: "Russo One", sans-serif;
   font-size: 4rem;
-  color: #000033;
+  background-image: linear-gradient(43deg,
+      #4158d0 0%,
+      #c850c0 46%,
+      #ffcc70 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Gameboard styles */
@@ -42,14 +72,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: whitesmoke;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.17);
+
   border-radius: 2rem;
-  border: 2px solid lightgrey;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   font-size: 5rem;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
   cursor: pointer;
   transition: all 0.5s;
 }
+
 .cell:hover {
   transform: scale(1.05);
 }
@@ -59,69 +93,320 @@
 .stats__container {
   display: flex;
   gap: 2rem;
+  padding-top: 0.4rem;
   font-size: 1.7rem;
   color: #000033;
-  font-family: 'Red Hat Display', sans-serif;
+  font-family: "Red Hat Display", sans-serif;
   font-weight: 800;
 }
 
 .stats__container-score {
   border-radius: 3rem;
-  border: 2px solid lightgrey;
   padding: 0 1.2rem;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-  background-color: whitesmoke;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   transition: all 0.5s;
-  font-family: "Carter One", cursive;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.17);
 
+  font-family: "Carter One", cursive;
 }
+
 .stats__container-score:hover {
   transform: scale(1.2);
 }
+
 .stats__container-score span {
-  background-color: whitesmoke;
   border-radius: 1rem;
 }
 
 /* Button styles */
 button {
-  border: 2px solid lightgrey;
   padding: 1rem 1.2rem;
   border-radius: 3rem;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-  background-color: whitesmoke;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.17);
+  border: none;
   font-size: 1.5rem;
-  font-family: 'Red Hat Display', sans-serif;
+  font-family: "Red Hat Display", sans-serif;
   font-weight: 700;
 }
 
 button:hover {
   cursor: pointer;
-  background-color: #f0f0f0;
+  background-color: rgba(188, 188, 188, 0.2);
 }
 
 /* Footer styles */
 footer {
-  padding: 2rem;
   display: flex;
   justify-content: center;
   gap: 1rem;
   align-items: center;
   margin-top: auto;
-  font-family: 'Red Hat Display', sans-serif;
+  font-family: "Red Hat Display", sans-serif;
   font-weight: 600;
   text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
+
 .marker-x {
-  color: rgb(71, 132, 238); /* Set the color for Player 1's marker (X) */
+  color: rgb(71, 132, 238);
+  /* Set the color for Player 1's marker (X) */
 }
 
 .marker-o {
-  color: rgb(231, 75, 75); /* Set the color for Player 2's marker (O) */
+  color: rgb(231, 75, 75);
+  /* Set the color for Player 2's marker (O) */
 }
+
 .winner {
-  font-size: 1.5rem;
-  color: #6aca77;
+  font-size: 2rem;
+  text-align: center;
+  opacity: 0;
   font-weight: 800;
-  font-family: 'Red Hat Display', sans-serif;
+  font-family: "Red Hat Display", sans-serif;
+  transition: opacity 0.5s;
+  /* Smoothly transition opacity changes */
+  color: #000033;
+  padding-top: 0.5rem;
+}
+
+.animate {
+  animation-name: winnerAnimation;
+  animation-duration: 1.1s;
+  animation-fill-mode: forwards;
+  /* Retain the final state of the animation */
+}
+
+@keyframes winnerAnimation {
+  0% {
+    opacity: 0;
+    /* Start with opacity 0 */
+    transform: scale(0.5);
+    /* Scale down the element */
+  }
+
+  50% {
+    opacity: 0.4;
+    /* Increase opacity to 1 */
+    transform: scale(8);
+    /* Scale up the element */
+  }
+
+  100% {
+    opacity: 1;
+    /* Maintain opacity 1 */
+    transform: scale(1);
+    /* Restore original scale */
+  }
+}
+
+.winner.animate {
+  animation-fill-mode: both;
+  /* Retain the final state of the animation when class is removed */
+}
+ 
+/* Background Animation  */
+.background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  background: #b4c5f9;
+  overflow: hidden;
+}
+
+.background li {
+  position: absolute;
+  top: 80vh;
+  z-index: -1;
+  left: 45vw;
+  width: 10px;
+  height: 10px;
+  border: solid 1px #a2b1e0;
+  color: transparent;
+  transform-origin: top left;
+  transform: scale(0) rotate(0deg) translate(-50%, -50%);
+  animation: cube 15s ease-in forwards infinite;
+}
+
+.background li:nth-child(0) {
+  animation-delay: 0s;
+  left: 1vw;
+  top: 3vh;
+  border-color: #c6d8ff;
+}
+
+.background li:nth-child(1) {
+  animation-delay: 2s;
+  left: 77vw;
+  top: 60vh;
+}
+
+.background li:nth-child(2) {
+  animation-delay: 4s;
+  left: 39vw;
+  top: 68vh;
+  border-color: #c6d8ff;
+}
+
+.background li:nth-child(3) {
+  animation-delay: 6s;
+  left: 96vw;
+  top: 12vh;
+}
+
+.background li:nth-child(4) {
+  animation-delay: 8s;
+  left: 95vw;
+  top: 32vh;
+}
+
+.background li:nth-child(5) {
+  animation-delay: 10s;
+  left: 52vw;
+  top: 37vh;
+  border-color: #c6d8ff;
+}
+
+.background li:nth-child(6) {
+  animation-delay: 12s;
+  left: 34vw;
+  top: 49vh;
+  border-color: #c6d8ff;
+}
+
+.background li:nth-child(7) {
+  animation-delay: 14s;
+  left: 56vw;
+  top: 99vh;
+  border-color: #c6d8ff;
+}
+
+.background li:nth-child(8) {
+  animation-delay: 16s;
+  left: 87vw;
+  top: 62vh;
+  border-color: #c6d8ff;
+}
+
+.background li:nth-child(9) {
+  animation-delay: 4s;
+  left: 47vw;
+  top: 39vh;
+}
+
+.background li:nth-child(10) {
+  animation-delay: 4s;
+  left: 70vw;
+  top: 73vh;
+  border-color: #c6d8ff;
+}
+
+.background li:nth-child(11) {
+  animation-delay: 4s;
+  left: 90vw;
+  top: 18vh;
+  border-color: #c6d8ff;
+}
+
+.background li:nth-child(12) {
+  animation-delay: 24s;
+  left: 21vw;
+  top: 10vh;
+  border-color: #c6d8ff;
+}
+
+.background li:nth-child(13) {
+  animation-delay: 26s;
+  left: 74vw;
+  top: 52vh;
+}
+
+.background li:nth-child(14) {
+  animation-delay: 28s;
+  left: 5vw;
+  top: 87vh;
+  border-color: #c6d8ff;
+}
+
+.background li:nth-child(15) {
+  animation-delay: 30s;
+  left: 26vw;
+  top: 7vh;
+  border-color: #c6d8ff;
+}
+
+.background li:nth-child(16) {
+  animation-delay: 32s;
+  left: 10vw;
+  top: 28vh;
+  border-color: #c6d8ff;
+}
+
+.background li:nth-child(17) {
+  animation-delay: 34s;
+  left: 44vw;
+  top: 55vh;
+}
+
+.background li:nth-child(18) {
+  animation-delay: 36s;
+  left: 83vw;
+  top: 23vh;
+  border-color: #c6d8ff;
+}
+
+.background li:nth-child(19) {
+  animation-delay: 38s;
+  left: 63vw;
+  top: 21vh;
+}
+
+.background li:nth-child(20) {
+  animation-delay: 40s;
+  left: 66vw;
+  top: 71vh;
+  border-color: #c6d8ff;
+}
+
+.background li:nth-child(21) {
+  animation-delay: 42s;
+  left: 61vw;
+  top: 80vh;
+  border-color: #c6d8ff;
+}
+
+.background li:nth-child(22) {
+  animation-delay: 44s;
+  left: 15vw;
+  top: 92vh;
+}
+
+.background li:nth-child(23) {
+  animation-delay: 46s;
+  left: 33vw;
+  top: 84vh;
+}
+
+.background li:nth-child(24) {
+  animation-delay: 48s;
+  left: 15vw;
+  top: 45vh;
+  border-color: #c6d8ff;
+}
+
+.background li:nth-child(25) {
+  animation-delay: 50s;
+  left: 29vw;
+  top: 92vh;
 }
