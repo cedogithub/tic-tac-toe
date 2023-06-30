@@ -2,8 +2,8 @@
 
 A Tic Tac Toe game implemented in JavaScript using factory functions and the module system. Play here : [cedogithub.github.io/tic-tac-toe/](https://cedogithub.github.io/tic-tac-toe/)
 
-![image](https://github.com/cedogithub/tic-tac-toe/assets/39746523/01dc393c-2822-4d8e-b6f7-6aab87a7432b)
 
+![tictacetoevid (1)](https://github.com/cedogithub/tic-tac-toe/assets/39746523/fee14503-7078-4d0c-bb09-addec8488e23)
 
 ## Rules
 The rules of Tic Tac Toe are straightforward. Two players take turns marking empty cells on a 3x3 grid. The first player to get three of their markers in a horizontal, vertical, or diagonal line wins the game. If all cells are filled without a winner, the game ends in a draw.
@@ -24,7 +24,7 @@ The rules of Tic Tac Toe are straightforward. Two players take turns marking emp
 Un jeu de Tic Tac Toe (Morpion) implémenté en JavaScript à l'aide de fonctions de fabrique et du système de modules.
 Jouez-ici: [cedogithub.github.io/tic-tac-toe/](https://cedogithub.github.io/tic-tac-toe/)
 
-![image](https://github.com/cedogithub/tic-tac-toe/assets/39746523/1cf04b1a-4480-4541-9d80-a5bf394ed76f)
+![tictacetoevid (1)](https://github.com/cedogithub/tic-tac-toe/assets/39746523/57f139ab-a187-4836-a805-1c2ff3747a08)
 
 
 ## Règles
