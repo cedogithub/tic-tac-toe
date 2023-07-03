@@ -17,7 +17,9 @@ The rules of Tic Tac Toe are straightforward. Two players take turns marking emp
 - **Module System (ES6)**: Organization and separation of code into reusable units.
 - **DOM Manipulation**: Dynamic update and rendering of the game board on the webpage.
 - **Event Handling**: Response to user interactions, such as clicking on cells.
-
+## Future release:
+- AI implementation using the minmax algorithm
+- Players will be able to choose wether to play against a near friend or an AI
 
 # Tic Tac Toe
 
